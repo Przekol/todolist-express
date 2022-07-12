@@ -1,6 +1,36 @@
 <main>
+  <div class='add-task'>
+    <a class='btn' href='/add-task'>Add task</a>
+  </div>
   {{#if hasToDoList}}
-    <h1>Są zadania</h1>
+    <div class='todo-list'>
+      {{#each toDoList}}
+        <div class='task task__priority--{{this.priority}} {{#if this.isDone}}done {{/if}}'>
+          <h2 class='task__title'>{{this.title}}</h2>
+          <p class='description'>{{this.description}}</p>
+          <div class='task__buttons'>
+            <form action='/done' method='POST' class='task__form--done'>
+              <input type='hidden' name='taskId' value='{{this.id}}'>
+              <button class='task__button--done btn {{#if this.isDone}} disabled  {{/if}}'>Done!</button>
+            </form>
+            <a
+              href='/edit-task/{{this.id}}?edit=true'
+              class='task__button--edit btn'
+            >Edit</a>
+            <form action='/delete-task' method='POST'>
+              <input type='hidden' name='taskId' value='{{this.id}}' />
+              <button class='task__button-delete btn'>Delete</button>
+            </form>
+          </div>
+          <div class='task__date'>
+            <p class='task__date-added'>Data dodania: {{this.date.added}}</p>
+            {{#if this.date.edited}}
+              <p class='task__date-edited'>Data edycji: {{this.date.edited}}</p>
+            {{/if}}
+          </div>
+        </div>
+      {{/each}}
+    </div>
   {{else}}
     <h1>Brak zadań na liście</h1>
   {{/if}}

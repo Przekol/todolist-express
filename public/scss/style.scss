@@ -1,3 +1,25 @@
 body {
-  font-size:16px;
+  font-size: 16px;
+}
+.done {
+  text-decoration: line-through;
+}
+.task {
+  padding: 1rem;
+}
+.task__priority--low {
+  background: green;
+}
+.task__priority--high {
+  background: red;
+}
+.task__priority--medium {
+  background: orange;
+}
+@media (min-width: 768px) {
+  .to-do-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
 }
