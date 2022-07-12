@@ -5,13 +5,13 @@
   {{#if hasToDoList}}
     <div class='todo-list'>
       {{#each toDoList}}
-        <div class='task task__priority--{{this.priority}} {{#if this.isDone}}done {{/if}}'>
+        <div class='task task__priority--{{this.priority}} {{#if this.isDone}}done{{/if}}'>
           <h2 class='task__title'>{{this.title}}</h2>
           <p class='description'>{{this.description}}</p>
           <div class='task__buttons'>
-            <form action='/done' method='POST' class='task__form--done'>
+            <form action='/done-task' method='POST' class='task__form--done'>
               <input type='hidden' name='taskId' value='{{this.id}}'>
-              <button class='task__button--done btn {{#if this.isDone}} disabled  {{/if}}'>Done!</button>
+              <button {{#if this.isDone}}disabled{{/if}} class='task__button--done btn {{#if this.isDone}}disabled{{/if}}'>Done!</button>
             </form>
             <a
               href='/edit-task/{{this.id}}?edit=true'
