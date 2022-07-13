@@ -25,7 +25,7 @@ const toDoList = [
   },
 ];
 
-exports.getIndex = (req, res) => {
+const getIndex = (req, res) => {
   res.render('todolist/index', {
     toDoList: toDoList,
     pageTitle: 'ToDo List',
@@ -33,14 +33,14 @@ exports.getIndex = (req, res) => {
   });
 };
 
-exports.getAddTask = (req, res) => {
+const getAddTask = (req, res) => {
   res.render('todolist/edit-task', {
     pageTitle: 'Add Task',
     editing: false,
   });
 };
 
-exports.getEditTask = (req, res) => {
+const getEditTask = (req, res) => {
   const editMode = req.query.edit;
   if (!editMode) return res.redirect('/');
   const taskId = req.params.taskId;
@@ -57,7 +57,7 @@ exports.getEditTask = (req, res) => {
   });
 };
 
-exports.postTaskDone = (req, res) => {
+const postTaskDone = (req, res) => {
   const { taskId } = req.body;
   const task = toDoList.find(task => task.id === Number(taskId));
   task.isDone = true;
@@ -65,7 +65,7 @@ exports.postTaskDone = (req, res) => {
   res.redirect('/');
 };
 
-exports.postAddTask = (req, res) => {
+const postAddTask = (req, res) => {
   const { title, description, priority } = req.body;
   toDoList.push({
     id: 50,
@@ -78,7 +78,7 @@ exports.postAddTask = (req, res) => {
   res.redirect('/');
 };
 
-exports.postEditTask = (req, res) => {
+const postEditTask = (req, res) => {
   const { taskId, title, description, priority } = req.body;
   const task = toDoList.find(task => task.id === Number(taskId));
   task.title = title;
@@ -88,7 +88,7 @@ exports.postEditTask = (req, res) => {
   res.redirect('/');
 };
 
-exports.postDeleteTask = (req, res) => {
+const postDeleteTask = (req, res) => {
   const taskId = req.body.taskId;
   toDoList.forEach((task, index) => {
     if (task.id === Number(taskId)) {
@@ -96,4 +96,14 @@ exports.postDeleteTask = (req, res) => {
     }
   });
   res.redirect('/');
+};
+
+module.exports = {
+  getIndex,
+  getAddTask,
+  postAddTask,
+  postTaskDone,
+  getEditTask,
+  postEditTask,
+  postDeleteTask,
 };

@@ -1,15 +1,23 @@
 const express = require('express');
-const todoController = require('../controllers/todolist');
+const {
+  getIndex,
+  getAddTask,
+  postAddTask,
+  postTaskDone,
+  getEditTask,
+  postEditTask,
+  postDeleteTask,
+} = require('../controllers/todolist');
 const todolistRouter = express.Router();
 
 todolistRouter
-  .get('/', todoController.getIndex)
-  .get('/add-task', todoController.getAddTask)
-  .post('/add-task', todoController.postAddTask)
-  .post('/done-task', todoController.postTaskDone)
-  .get('/edit-task/:taskId', todoController.getEditTask)
-  .post('/edit-task', todoController.postEditTask)
-  .post('/delete-task', todoController.postDeleteTask);
+  .get('/', getIndex)
+  .get('/add-task', getAddTask)
+  .post('/add-task', postAddTask)
+  .post('/done-task', postTaskDone)
+  .get('/edit-task/:taskId', getEditTask)
+  .post('/edit-task', postEditTask)
+  .post('/delete-task', postDeleteTask);
 
 module.exports = {
   todolistRouter,
