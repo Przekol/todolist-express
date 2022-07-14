@@ -10,13 +10,13 @@
       <textarea name="description" id="description" rows="5">{{#if editing}}{{task.description}}{{/if}}</textarea>
     </div>
     <div class='form-control'>
-      <select name="priority">
-        <option  value="-1">choose a priority</option>
-        <option {{#if priority.low}} selected {{/if}} value="low">low</option>
-        <option {{#if priority.medium}} selected {{/if}} value="medium">medium</option>
-        <option {{#if priority.high}} selected {{/if}} value="high">high</option>
-
-      </select>
+      <label>Priority:
+        <select name="priority">
+          <option {{#if priority.low}} selected {{/if}} value="low">low</option>
+          <option {{#if priority.medium}} selected {{/if}} value="medium">medium</option>
+          <option {{#if priority.high}} selected {{/if}} value="high">high</option>
+        </select>
+      </label>
     </div>
     {{#if editing}}
       <input type='hidden' value='{{task.id}}' name='taskId'>
