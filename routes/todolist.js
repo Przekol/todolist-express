@@ -3,7 +3,7 @@ const {
   getIndex,
   getAddTask,
   postAddTask,
-  postTaskDone,
+  postDoneTask,
   getEditTask,
   postEditTask,
   postDeleteTask,
@@ -14,7 +14,7 @@ todolistRouter
   .get('/', getIndex)
   .get('/add-task', getAddTask)
   .post('/add-task', postAddTask)
-  .post('/done-task', postTaskDone)
+  .post('/done-task', postDoneTask)
   .get('/edit-task/:taskId', getEditTask)
   .post('/edit-task', postEditTask)
   .post('/delete-task', postDeleteTask);
