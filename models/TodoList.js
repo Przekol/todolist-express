@@ -2,40 +2,40 @@ const { Task } = require('./Task');
 const { ValueGenerator } = require('../utils/valueGenerator');
 
 class TodoList {
-  static todoList = [];
+  constructor(todolist) {
+    this.todoList = todolist || [];
+  }
 
-  static setToDoList(toDoList) {
+  setToDoList(toDoList) {
     this.todoList = toDoList;
   }
-  static getToDoList() {
+  getToDoList() {
     return this.todoList;
   }
-  static addTask(task) {
-    if (task instanceof Task) {
-      this.todoList.push(task);
-    } else {
-      throw new Error('Object in toDoList catalog should be of Task type!');
-    }
+  addTask(title, description, priority) {
+    const task = new Task();
+    task.createTask(title, description, priority);
+
+    this.todoList.push(task.getInfoOfTask());
   }
-  static deleteTask(taskId) {
+  deleteTask(taskId) {
     const updatedTodoList = this.todoList.filter(task => task.id !== taskId);
-    TodoList.setToDoList(updatedTodoList);
+    this.setToDoList(updatedTodoList);
   }
-  static editTask(taskId, title, description, priority) {
+  editTask(taskId, title, description, priority) {
     const task = this.todoList.find(task => task.id === taskId);
     task.setTitle(title);
     task.setDescription(description);
     task.setPriority(priority);
     task.setDateEdited(ValueGenerator.getCurrentDate());
   }
-  static doneTask(taskId) {
+  doneTask(taskId) {
     const task = this.todoList.find(task => task.id === taskId);
     task.setIsDone(true);
   }
 
-  static getTask(taskId) {
-    const task = this.todoList.find(task => task.id === taskId);
-    return task.getInfoOfTask();
+  getTask(taskId) {
+    return this.todoList.find(task => task.id === taskId);
   }
 }
 

@@ -1,7 +1,10 @@
 const { ValueGenerator } = require('../utils/ValueGenerator');
 
 class Task {
-  constructor(title, description, priority) {
+  constructor(json) {
+    Object.assign(this, json);
+  }
+  createTask(title, description, priority) {
     this.id = ValueGenerator.getGeneratedId();
     this.title = title;
     this.description = description;

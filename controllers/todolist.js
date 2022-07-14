@@ -1,11 +1,30 @@
 const { TodoList } = require('../models/TodoList');
 const { Task } = require('../models/Task');
+const config = require('../config');
+const {
+  getDataFromFile,
+  saveDataToFile,
+} = require('../utils/files-operations');
 
-const getIndex = (req, res) => {
+const getTodoList = async () => {
+  const todolistJSON = await getDataFromFile(config.FILE_DATA);
+  if (!todolistJSON) {
+    return new TodoList(todolistJSON);
+  }
+  const todolist = todolistJSON.map(task => new Task(task));
+  return new TodoList(todolist);
+};
+
+const saveTodoList = async todoList => {
+  await saveDataToFile(config.FILE_DATA, todoList.getToDoList());
+};
+
+const getIndex = async (req, res) => {
+  const todoList = await getTodoList();
   res.render('todolist/index', {
-    toDoList: TodoList.getToDoList(),
+    toDoList: todoList.getToDoList(),
     pageTitle: 'Todo List',
-    hasToDoList: TodoList.getToDoList().length > 0,
+    hasToDoList: todoList.getToDoList().length > 0,
   });
 };
 
@@ -16,11 +35,12 @@ const getAddTask = (req, res) => {
   });
 };
 
-const getEditTask = (req, res) => {
+const getEditTask = async (req, res) => {
   const editMode = req.query.edit;
   if (!editMode) return res.redirect('/');
   const taskId = req.params.taskId;
-  const task = TodoList.getTask(taskId);
+  const todoList = await getTodoList();
+  const task = todoList.getTask(taskId);
   res.render('todolist/edit-task', {
     pageTitle: 'Edit Task',
     editing: editMode,
@@ -33,28 +53,35 @@ const getEditTask = (req, res) => {
   });
 };
 
-const postDoneTask = (req, res) => {
+const postDoneTask = async (req, res) => {
   const { taskId } = req.body;
-  TodoList.doneTask(taskId);
-
+  const todoList = await getTodoList();
+  todoList.doneTask(taskId);
+  await saveTodoList(todoList);
   res.redirect('/');
 };
 
-const postAddTask = (req, res) => {
+const postAddTask = async (req, res) => {
   const { title, description, priority } = req.body;
-  TodoList.addTask(new Task(title, description, priority));
+  const todoList = await getTodoList();
+  todoList.addTask(title, description, priority);
+  await saveTodoList(todoList);
   res.redirect('/');
 };
 
-const postEditTask = (req, res) => {
+const postEditTask = async (req, res) => {
   const { taskId, title, description, priority } = req.body;
-  TodoList.editTask(taskId, title, description, priority);
+  const todoList = await getTodoList();
+  todoList.editTask(taskId, title, description, priority);
+  await saveTodoList(todoList);
   res.redirect('/');
 };
 
-const postDeleteTask = (req, res) => {
+const postDeleteTask = async (req, res) => {
   const taskId = req.body.taskId;
-  TodoList.deleteTask(taskId);
+  const todoList = await getTodoList();
+  todoList.deleteTask(taskId);
+  await saveTodoList(todoList);
   res.redirect('/');
 };
 
