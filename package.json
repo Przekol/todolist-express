@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "npx nodemon app.js"
+    "start": "node app.js",
+    "nodemon": "npx nodemon app.js"
   },
   "repository": {
     "type": "git",
