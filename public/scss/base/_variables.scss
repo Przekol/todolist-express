@@ -1,0 +1,51 @@
+@use 'sass:math';
+
+:root {
+	--bg-line: var(--primary-900);
+	--bg-gradient-1: var(--primary-800);
+	--bg-gradient-2: var(--primary-700);
+	--bg-section: var(--primary-200);
+	--bg-modal: var(--primary-50);
+	--bg-main: var(--primary-50);
+	--bg-content: var(--primary-50);
+
+	--text-header-info: var(--primary-200);
+	--text-hint: var(--primary-700);
+	--text-subtitle: var(--primary-900);
+	--text-mood-number: var(--primary-600);
+	--text-mood: var(--primary-900);
+
+	--btn-color-base: var(--gray-0);
+
+	--btn-font-color: var(--primary-700);
+	--btn-bg-color: var(--btn-color-base);
+	--btn-bg-color-hover: var(--primary-50);
+	--btn-font-color-disabled: var(--gray-300);
+
+	--btn-border-color-outlined: var(--primary-300);
+	--btn-bg-color-hover-outlined: var(--primary-50);
+	--btn-border-color-hover-outlined: var(--primary-300);
+	--btn-font-color-disabled-outlined: var(--primary-300);
+	--btn-border-color-disabled-outlined: var(--primary-200);
+
+	--btn-bg-color-shaded: var(--primary-50);
+	--btn-border-color-shaded: var(--primary-50);
+	--btn-bg-color-hover-shaded: var(--primary-100);
+	--btn-border-color-hover-shaded: var(--primary-100);
+	--btn-font-color-disabled-shaded: var(--primary-300);
+	--btn-bg-color-disabled-shaded: var(--primary-25);
+	--btn-border-color-disabled-shaded: var(--primary-25);
+
+	--btn-font-color-contained: var(--btn-color-base);
+	--btn-bg-color-contained: var(--primary-600);
+	--btn-border-color-contained: var(--primary-600);
+	--btn-bg-color-hover-contained: var(--primary-700);
+	--btn-border-color-hover-contained: var(--primary-700);
+	--btn-font-color-disabled-contained: var(--btn-color-base);
+	--btn-bg-color-disabled-contained: var(--primary-200);
+	--btn-border-color-disabled-contained: var(--primary-200);
+
+	--shadow: var(--rgb-gray);
+	--shadow-focus: var(--primary-100);
+	--btn-ripple-effect: var(--primary-400);
+}

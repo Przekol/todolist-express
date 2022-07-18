@@ -1,0 +1,31 @@
+@use '../abstracts/' as *;
+
+
+@mixin mq($breakpoint) {
+	$size: map-get($breakpoints, $breakpoint);
+
+	@if ($size) {
+		@media only screen and (min-width: #{$size}) {
+			@content;
+		}
+	} @else {
+		@error '"#{$breakpoint}" - It has no such value';
+	}
+}
+
+@mixin blurs($blur, $value:ligth) {
+	$size: map-get($blurs, $blur);
+	
+
+	@if ($size) {
+		@if ($value) {
+			backdrop-filter: blur($size);
+			background-color: rgba(var(--rgb-#{$value}),0.6);
+		} @else {
+			@error '"#{$value}" - It has no such value';
+		}
+	} @else {
+		@error '"#{$blur}" - It has no such value';
+	}
+}
+

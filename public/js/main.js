@@ -26,32 +26,36 @@ const renderTodoList = todolist => {
     taskDiv.setAttribute('data-date-added', `${date.added}`);
 
     const taskH2 = document.createElement('h2');
-    taskH2.classList.add('title');
+    taskH2.classList.add('title', 'h2');
     taskH2.textContent = title;
 
     const taskP = document.createElement('p');
-    taskP.classList.add('description');
+    taskP.classList.add('description', 'text');
     taskP.textContent = description;
 
     const taskButtons = document.createElement('div');
     taskButtons.classList.add('task__buttons');
     taskButtons.setAttribute('data-id', `${id}`);
-    const taskSubmitButton = document.createElement('button');
+    const taskDoneButton = document.createElement('button');
 
-    taskSubmitButton.classList.add('task__button--submit');
-    taskSubmitButton.setAttribute('data-button', 'done');
-    taskSubmitButton.textContent = 'Done';
-    taskButtons.appendChild(taskSubmitButton);
+    taskDoneButton.classList.add('task__button--done', 'btn', 'btn--contained');
+    taskDoneButton.setAttribute('data-button', 'done');
+    taskDoneButton.textContent = 'Done';
+    taskButtons.appendChild(taskDoneButton);
 
     const taskEditButton = document.createElement('button');
-    taskEditButton.classList.add('task__button--edit');
+    taskEditButton.classList.add('task__button--edit', 'btn', 'btn--shaded');
     taskEditButton.setAttribute('data-button', 'edit');
     taskEditButton.textContent = 'Edit';
     taskButtons.appendChild(taskEditButton);
 
     const taskDeleteButton = document.createElement('button');
     taskDeleteButton.setAttribute('data-button', 'delete');
-    taskDeleteButton.classList.add('task__button--delete');
+    taskDeleteButton.classList.add(
+      'task__button--delete',
+      'btn',
+      'btn--outlined'
+    );
     taskDeleteButton.textContent = 'Delete';
 
     const dateDiv = document.createElement('div');

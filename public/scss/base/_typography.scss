@@ -1,0 +1,72 @@
+@use '../utils/' as *;
+
+h1,
+.h1 {
+	--fs-heading: var(--fs-heading-md);
+	--lh-heading: var(--lh-heading-md);
+	font-size: var(--fs-heading);
+	line-height: var(--lh-heading);
+
+	@include mq(small) {
+		--fs-heading: var(--fs-heading-xl);
+		--lh-heading: var(--lh-heading-xl);
+	}
+}
+
+.text {
+	--fs-text: var(--fs-text-lg);
+	--lh-text: var(--lh-text-lg);
+	font-size: var(--fs-text);
+	line-height: var(--lh-text);
+
+	@include mq(small) {
+		--fs-text: var(--fs-text-xl);
+		--lh-text: var(--lh-text-xl);
+	}
+}
+
+h2,
+.h2 {
+	--fs-heading: var(--fs-heading-sm);
+	--lh-heading: var(--lh-heading-sm);
+	font-size: var(--fs-heading);
+	line-height: var(--lh-heading);
+
+	@include mq(small) {
+		--fs-heading: var(--fs-heading-md);
+		--lh-heading: var(--lh-heading-md);
+	}
+}
+
+h3,
+.h3 {
+	--fs-heading: var(--fs-heading-xs);
+	--lh-heading: var(--lh-heading-xs);
+	font-size: var(--fs-heading);
+	line-height: var(--lh-heading);
+
+	@include mq(small) {
+		--fs-heading: var(--fs-heading-sm);
+		--lh-heading: var(--lh-heading-sm);
+	}
+}
+
+.h1,
+.h2,
+.h3,
+.subtitle {
+	font-weight: var(--fw-bold);
+}
+
+.text {
+	font-weight: var(--fw-regular);
+}
+
+.h1 {
+	letter-spacing: -0.02em;
+}
+
+.subtitle {
+	color: var(--text-subtitle);
+	text-align: center;
+}

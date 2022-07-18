@@ -1,0 +1,102 @@
+@use '../utils/' as *;
+
+.done {
+  text-decoration: line-through;
+}
+
+.to-do-list {
+  margin: 1rem;
+}
+.task {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: shadow(xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.task__priority--low {
+  border-top: 5px solid #65b168;
+  border-bottom: 5px solid #65b168;
+  background: rgba(101, 177, 104, 0.15);
+}
+.task__priority--medium {
+  border-top: 5px solid #e5ae40;
+  border-bottom: 5px solid #e5ae40;
+  background: rgba(229, 174, 64, 0.15);
+}
+.task__priority--high {
+  border-top: 5px solid #f6655a;
+  border-bottom: 5px solid #f6655a;
+  background: rgba(246, 101, 90, 0.15);
+}
+
+.task__modal {
+  @include blurs(xl, dark);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10;
+}
+.task__form {
+  background: hsla(218, 100%, 88%, 0.15);
+  border-top: 5px solid var(--primary-400);
+  border-bottom: 5px solid var(--primary-400);
+  box-shadow: shadow(xl);
+  position: absolute;
+  padding: 0.75rem 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.task__title {
+  text-align: center;
+}
+
+.task__form-control {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.task__form-control label,
+.task__form-control input,
+.task__form-control textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.task__form-control input,
+.task__form-control textarea {
+  border: 1px solid var(--gray-25);
+  border-radius: 2px;
+}
+
+.task__form-control input:focus,
+.task__form-control textarea:focus {
+  outline-color: #00695c;
+}
+
+.task__buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.task__button--add {
+  margin: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+@media (min-width: 768px) {
+  .to-do-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+}

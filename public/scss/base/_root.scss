@@ -1,0 +1,61 @@
+@use "../abstracts/index" as *;
+@use "../utils/index" as *;
+
+:root {
+  @each $prop, $value in $font-family {
+    --ff-#{$prop}: #{$value};
+  }
+
+  @each $prop, $value in $font-weight {
+    --fw-#{$prop}: #{$value};
+  }
+  @each $mode, $property in $font-sizes {
+    @each $prop, $value in $property {
+      --fs-#{$mode}-#{$prop}: #{$value};
+    }
+  }
+  @each $mode, $property in $line-height {
+    @each $prop, $value in $property {
+      --lh-#{$mode}-#{$prop}: #{$value};
+    }
+  }
+
+  @each $prop, $value in $main-spacing {
+    --spacing-#{$prop}: #{$value};
+  }
+
+  @each $mode, $property in $themes {
+    @each $prop, $value in $property {
+      @if $mode == "dark" {
+        @media (prefers-color-scheme: dark) {
+          @each $index, $color in $value {
+            --#{$prop}-#{$index}: #{$color};
+          }
+        }
+        [data-theme="#{$mode}"] {
+          @each $index, $color in $value {
+            --#{$prop}-#{$index}: #{$color};
+          }
+        }
+      } @else if $mode == "light" {
+        @each $index, $color in $value {
+          --#{$prop}-#{$index}: #{$color};
+        }
+        [data-theme="#{$mode}"] {
+          @each $index, $color in $value {
+            --#{$prop}-#{$index}: #{$color};
+          }
+        }
+      } @else {
+        [data-theme="#{$mode}"] {
+          @each $index, $color in $value {
+            --#{$prop}-#{$index}: #{$color};
+          }
+        }
+      }
+    }
+  }
+  @each $prop, $value in $rgb {
+    --rgb-#{$prop}: #{$value};
+  }
+}

@@ -13,17 +13,19 @@
   </head>
   <body>
     <div class="add-task">
-      <button class="task__button--add">Add task</button>
+      <button class="btn btn--contained task__button--add">Add task</button>
     </div>
     <div class="task__modal hidden">
       <form action="" class="task__form">
+        <h2 class="task__title">Task</h2>
         <div class="task__form-control">
-          <label for="title">Title</label>
-          <input type="text" name="title" id="title" value="" />
+          <label class="text" for="title">Title</label>
+          <input class="text" type="text" name="title" id="title" value="" />
         </div>
         <div class="task__form-control">
-          <label for="description">Description</label>
+          <label class="text" for="description">Description</label>
           <textarea
+            class="text"
             name="description"
             id="description"
             cols="30"
@@ -31,8 +33,8 @@
           ></textarea>
         </div>
         <div class="task__form-control">
-          <label for="priority">Priority:</label>
-          <select name="priority" id="priority">
+          <label class="text" for="priority">Priority</label>
+          <select class="text" name="priority" id="priority">
             <option value="low">low</option>
             <option value="medium">medium</option>
             <option value="high">high</option>
@@ -40,12 +42,11 @@
         </div>
         <div class="task__buttons">
           <button
-            type="submit"
-            class="task__button--submit task__form-button--submit"
+            class="btn btn--success btn--shaded task__button--submit task__form-button--submit"
           ></button>
           <button
             type="reset"
-            class="task__button--cancel task__form-button--cancel"
+            class="btn btn--error btn--shaded task__button--cancel task__form-button--cancel"
           >
             Cancel
           </button>
