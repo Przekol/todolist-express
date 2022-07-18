@@ -1,0 +1,35 @@
+$font-sizes: (
+	text: (
+		xs: 0.75rem,
+		sm: 0.875rem,
+		md: 1rem,
+		lg: 1.125rem,
+		xl: 1.25rem,
+	),
+	heading: (
+		xs: 1.5rem,
+		sm: 1.875rem,
+		md: 2.25rem,
+		lg: 3rem,
+		xl: 3.75rem,
+		2xl: 4.5rem,
+	),
+);
+
+$line-height: (
+	text: (
+		xs: 1.125rem,
+		sm: 1.25rem,
+		md: 1.5rem,
+		lg: 1.75rem,
+		xl: 1.875rem,
+	),
+	heading: (
+		xs: 2rem,
+		sm: 2.375rem,
+		md: 2.75rem,
+		lg: 3.75rem,
+		xl: 4.625rem,
+		2xl: 5.625rem,
+	),
+);
