@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>ToDo List</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script defer type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="add-task">
+      <button class="task__button--add">Add task</button>
+    </div>
+    <div class="task__modal hidden">
+      <form action="" class="task__form">
+        <div class="task__form-control">
+          <label for="title">Title</label>
+          <input type="text" name="title" id="title" value="" />
+        </div>
+        <div class="task__form-control">
+          <label for="description">Description</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="30"
+            rows="10"
+          ></textarea>
+        </div>
+        <div class="task__form-control">
+          <label for="priority">Priority:</label>
+          <select name="priority" id="priority">
+            <option value="low">low</option>
+            <option value="medium">medium</option>
+            <option value="high">high</option>
+          </select>
+        </div>
+        <div class="task__buttons">
+          <button
+            class="task__button--submit task__form-button--submit"
+          ></button>
+          <button class="task__button--cancel task__form-button--cancel">
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="to-do-list">
+      <div class="to-do-list__priority--low"></div>
+      <div class="to-do-list__priority--medium"></div>
+      <div class="to-do-list__priority--high"></div>
+    </div>
+  </body>
+</html>

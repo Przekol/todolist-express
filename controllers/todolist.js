@@ -6,7 +6,7 @@ const {
   saveDataToFile,
 } = require('../utils/files-operations');
 
-const getTodoList = async () => {
+const getTodoListFromFile = async () => {
   const todolistJSON = await getDataFromFile(config.FILE_DATA);
   if (!todolistJSON) {
     return new TodoList(todolistJSON);
@@ -15,79 +15,56 @@ const getTodoList = async () => {
   return new TodoList(todolist);
 };
 
-const saveTodoList = async todoList => {
+const saveTodoListToFile = async todoList => {
   await saveDataToFile(config.FILE_DATA, todoList.getToDoList());
 };
 
-const getIndex = async (req, res) => {
-  const todoList = await getTodoList();
-  res.render('todolist/index', {
-    toDoList: todoList.getToDoList(),
-    pageTitle: 'Todo List',
-    hasToDoList: todoList.getToDoList().length > 0,
-  });
-};
-
-const getAddTask = (req, res) => {
-  res.render('todolist/edit-task', {
-    pageTitle: 'Add Task',
-    editing: false,
-  });
+const getTodoList = async (req, res) => {
+  const todoList = await getTodoListFromFile();
+  res.json(todoList);
 };
 
 const getEditTask = async (req, res) => {
-  const editMode = req.query.edit;
-  if (!editMode) return res.redirect('/');
   const taskId = req.params.taskId;
-  const todoList = await getTodoList();
+  const todoList = await getTodoListFromFile();
   const task = todoList.getTask(taskId);
-  res.render('todolist/edit-task', {
-    pageTitle: 'Edit Task',
-    editing: editMode,
-    task: task,
-    priority: {
-      low: task.priority === 'low',
-      medium: task.priority === 'medium',
-      high: task.priority === 'high',
-    },
-  });
+  res.json(task);
 };
 
 const postDoneTask = async (req, res) => {
   const { taskId } = req.body;
-  const todoList = await getTodoList();
+  const todoList = await getTodoListFromFile();
   todoList.doneTask(taskId);
-  await saveTodoList(todoList);
-  res.redirect('/');
+  await saveTodoListToFile(todoList);
+  res.json(todoList);
 };
 
 const postAddTask = async (req, res) => {
   const { title, description, priority } = req.body;
-  const todoList = await getTodoList();
+  const todoList = await getTodoListFromFile();
   todoList.addTask(title, description, priority);
-  await saveTodoList(todoList);
-  res.redirect('/');
+  await saveTodoListToFile(todoList);
+  res.json(todoList);
 };
 
 const postEditTask = async (req, res) => {
   const { taskId, title, description, priority } = req.body;
-  const todoList = await getTodoList();
+  const todoList = await getTodoListFromFile();
   todoList.editTask(taskId, title, description, priority);
-  await saveTodoList(todoList);
-  res.redirect('/');
+  await saveTodoListToFile(todoList);
+  res.json(todoList);
 };
 
 const postDeleteTask = async (req, res) => {
-  const taskId = req.body.taskId;
-  const todoList = await getTodoList();
+  const { taskId } = req.body;
+  const todoList = await getTodoListFromFile();
   todoList.deleteTask(taskId);
-  await saveTodoList(todoList);
-  res.redirect('/');
+  await saveTodoListToFile(todoList);
+  res.json(todoList);
 };
 
 module.exports = {
-  getIndex,
-  getAddTask,
+  getTodoList,
   postAddTask,
   postDoneTask,
   getEditTask,

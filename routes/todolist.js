@@ -1,7 +1,6 @@
 const express = require('express');
 const {
-  getIndex,
-  getAddTask,
+  getTodoList,
   postAddTask,
   postDoneTask,
   getEditTask,
@@ -11,8 +10,7 @@ const {
 const todolistRouter = express.Router();
 
 todolistRouter
-  .get('/', getIndex)
-  .get('/add-task', getAddTask)
+  .get('/todo', getTodoList)
   .post('/add-task', postAddTask)
   .post('/done-task', postDoneTask)
   .get('/edit-task/:taskId', getEditTask)
