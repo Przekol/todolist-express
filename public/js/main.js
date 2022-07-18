@@ -181,7 +181,6 @@ toDoListEl.addEventListener('click', e => {
     })();
   }
   if (e.target.dataset.button === 'delete') {
-    console.log('delete Task', taskId);
     (async () => {
       const res = await fetch(`/delete-task`, options('POST', { taskId }));
       const todolist = await res.json();
