@@ -14,6 +14,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', todolistRouter);
 app.use(get404);
 
-app.listen(config.PORT, config.HOST_NAME, () => {
-  console.log(`Server listening on http://${config.HOST_NAME}:${config.PORT}`);
+app.listen(config.PORT, () => {
+  console.log(`Server listening...`);
 });

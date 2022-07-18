@@ -1,6 +1,5 @@
 const { join } = require('path');
 module.exports = {
-  PORT: 3000,
-  HOST_NAME: '127.0.0.1',
+  PORT: process.env.PORT || 3000,
   FILE_DATA: join(__dirname, './data/todolist.json'),
 };
