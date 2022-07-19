@@ -1,7 +1,8 @@
 @use '../utils/' as *;
 
 .done {
-  .title, .description {
+  .title,
+  .description {
     text-decoration: line-through;
   }
 }
@@ -44,7 +45,7 @@
   z-index: 10;
 }
 .task__form {
-  background: hsla(218, 100%, 88%, 0.15);
+  background: hsla(218, 100%, 88%, 0.8);
   border-top: 5px solid var(--primary-400);
   border-bottom: 5px solid var(--primary-400);
   box-shadow: shadow(xl);
@@ -81,7 +82,7 @@
 
 .task__form-control input:focus,
 .task__form-control textarea:focus {
-  outline-color: #00695c;
+  outline-color: var(--gray-25);
 }
 
 .task__buttons {
@@ -94,6 +95,13 @@
 
 .hidden {
   display: none;
+}
+
+.task__form-error {
+  background: var(--error-700);
+  color: var(--error-25);
+  border-radius: 2px;
+  font-weight: var(--fw-bold);
 }
 @media (min-width: 768px) {
   .to-do-list {
