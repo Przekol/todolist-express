@@ -819,55 +819,6 @@ span.ripple-el {
     opacity: 0;
   }
 }
-.toggle {
-  --toggle-bg-color: var(--primary-300);
-  --toggle-circle-bg-color: var(--gray-0);
-  --toggle-translateX: 0%;
-  --toggle-bg-color-hover: var(--gray-200);
-  --toggle-bg-color-active: var(--primary-600);
-  --toggle-bg-color-hover-active: var(--primary-700);
-  --toggle-translateX-active: 100%;
-  --shadow-focus: var(--primary-100);
-  width: 36px;
-  height: 20px;
-  background-color: var(--toggle-bg-color);
-  border: none;
-  border-radius: 0.75em;
-  box-shadow: 0px 1px 2px rgba(var(--shadow), 0.05);
-  outline: none;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
-}
-.toggle:focus-visible {
-  box-shadow: 0px 0px 0px 4px var(--shadow-focus);
-}
-.toggle:hover {
-  --toggle-bg-color: var(--toggle-bg-color-hover);
-}
-.toggle__circle {
-  margin: 0 2px;
-  transform: translateX(var(--toggle-translateX));
-  width: 16px;
-  height: 16px;
-  background-color: var(--toggle-circle-bg-color);
-  border-radius: 50%;
-  box-shadow: 0px 1px 2px rgba(var(--shadow), 0.06), 0px 1px 3px rgba(var(--shadow), 0.1);
-  transition: all 0.3s ease-out;
-}
-.toggle--active {
-  --toggle-bg-color: var(--toggle-bg-color-active);
-  --toggle-bg-color-hover: var(--toggle-bg-color-hover-active);
-  --toggle-translateX: var(--toggle-translateX-active);
-}
-.toggle--md {
-  width: 44px;
-  height: 24px;
-}
-.toggle--md .toggle__circle {
-  width: 20px;
-  height: 20px;
-}
-
 .done .title, .done .description {
   text-decoration: line-through;
 }
