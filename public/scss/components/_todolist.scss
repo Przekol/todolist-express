@@ -1,7 +1,9 @@
 @use '../utils/' as *;
 
 .done {
-  text-decoration: line-through;
+  .title, .description {
+    text-decoration: line-through;
+  }
 }
 
 .to-do-list {
@@ -86,7 +88,7 @@
   display: flex;
   justify-content: space-around;
 }
-.task__button--add {
+.task__button--open-form {
   margin: 1rem;
 }
 
