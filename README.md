@@ -52,6 +52,11 @@ The application works without refreshing the browser. This application has been 
 |    |—— index.html
 |    |—— js
 |        |—— main.js
+|        |—— renderTodoList.js
+|        |—— taskForm.js
+|        |—— utils
+|            |—— fetch.js
+|            |—— formatDate.js
 |    |—— scss
 |        |—— abstracts
 |            |—— _blurs.scss
@@ -109,6 +114,7 @@ $ npm start
 ## ⚠ License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
 
 ## 🤝 Contact
 E-mail: [Przemysław Wojciechowski](mailto:przemyslaw.r.wojciechowski@gmail.com)
