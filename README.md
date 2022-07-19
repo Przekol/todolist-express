@@ -25,7 +25,7 @@ The application works without refreshing the browser. This application has been 
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
-## 🔨 Project Structure
+# 🔨 Project Structure
 
 
 ```
@@ -92,7 +92,7 @@ The application works without refreshing the browser. This application has been 
 |    |—— ValueGenerator.js
 ```
 
-## ⚙️ Installation
+# ⚙️Installation
 
 
 
@@ -111,12 +111,12 @@ $ npm start
 
 # The server will initialize in the <http://localhost:3000>
 ```
-## ⚠ License
+# ⚠ License
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
 
-## 🤝 Contact
+# 🤝 Contact
 E-mail: [Przemysław Wojciechowski](mailto:przemyslaw.r.wojciechowski@gmail.com)
 ## 🌐 Socials:
 [![GitHub](https://img.shields.io/badge/github-%2324292e.svg?&style=for-the-badge&logo=github&logoColor=white)](https://github.com/przekol)
